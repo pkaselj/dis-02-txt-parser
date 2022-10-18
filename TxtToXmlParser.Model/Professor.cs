@@ -1,15 +1,16 @@
 ﻿namespace TxtToXmlParser.Model
 {
 
-    class Professor : Person
+    public class Professor : Person
     {
         public Professor(
             string oIB,
+            string name,
             Gender gender,
             DateOnly dateOfBirth,
             decimal paycheck
         )
-            : base(oIB, gender, dateOfBirth)
+            : base(oIB, name, gender, dateOfBirth)
         {
             Paycheck = paycheck;
         }
