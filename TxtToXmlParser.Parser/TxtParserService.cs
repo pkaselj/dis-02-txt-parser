@@ -2,35 +2,41 @@ using TxtToXmlParser.Model;
 
 namespace TxtToXmlParser.Parser
 {
-    public static class TxtParser
+    public class TxtParser
     {
         private const char lineDelimiter = '\n';
-        private const char columnDelimiter = ';';
-        private static IEnumerable<string> ParseColumnsFromLine(string line)
-        {
-            if(line.Length > 0)
-            {
-                return line.Split(columnDelimiter);
-            }
+        private const char cellDelimiter = ';';
 
-            throw new Exception("Cannot parse columns from empty line.");
-        }
-        private static IEnumerable<string> ParseLinesFromContent(string fileContent)
-        {
-            if(fileContent.Length > 0)
-            {
-                return fileContent.Split(lineDelimiter);
-            }
+        public string FileName { get; }
 
-            throw new Exception("Cannot parse lines from empty string.");
-        }
-        private static string ReadFileContent(string fileName)
+        private TxtParser(string fileName)
         {
-
+            FileName = fileName;
         }
+
+        private IEnumerable<Person> GetParsedModels()
+        {
+            // TODO
+        }
+
+        private string GetFileContent()
+        {
+            return File.ReadAllText(FileName);
+        }
+
+        private IEnumerable<string> SplitStringIntoLines(string content)
+        {
+            return content.Split(lineDelimiter);
+        }
+
+        private IEnumerable<string> SplitLineIntoCells(string line)
+        {
+            return line.Split(cellDelimiter);
+        }
+
         public static IEnumerable<Person> ParseTxtFile(string fileName)
         {
-
+            return new TxtParser(fileName).GetParsedModels();
         }
     }
 }
