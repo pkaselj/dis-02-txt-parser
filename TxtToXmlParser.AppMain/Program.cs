@@ -1,4 +1,7 @@
 ﻿using System.Linq;
+using TxtToXmlParser;
+using TxtToXmlParser.Parser;
+
 public class Program
 {
     private static void ThrowIfFileNotFound(string filePath)
@@ -67,10 +70,45 @@ public class Program
         throw new Exception($"Argument for destination file not found (-d, --destination)!");
     }
 
-    // Assumes correct number of args (see ThrowIfNotEnoughArgs(...)) 
-    private static string GetParserFileFromArgs(Dictionary<string, string> args)
+    private static string GetParserStringFromArgs(Dictionary<string, string> args)
     {
+        string? parserString;
 
+        bool fSuccess = false;
+
+        fSuccess = args.TryGetValue("-p", out parserString);
+        if (fSuccess && null != parserString)
+        {
+            return parserString;
+        }
+
+        fSuccess = args.TryGetValue("--parser", out parserString);
+        if (fSuccess && null != parserString)
+        {
+            return parserString;
+        }
+
+        throw new Exception($"Argument for parser not found (-p, --parser)!");
+    }
+
+    // Assumes correct number of args (see ThrowIfNotEnoughArgs(...)) 
+    private static ISerializer GetParserFromArgs(Dictionary<string, string> args)
+    {
+        string parserString = GetParserStringFromArgs(args);
+
+        string parserStringUpper = parserString.ToUpper();
+
+        switch (parserStringUpper)
+        {
+            case "XML":
+                return new XmlSerializerService();
+
+            case "JSON":
+                return new JsonSerializerService();
+
+            default:
+                throw new Exception($"Invalid parser argument value: '{parserString}', expected: JSON or XML");
+        }
     }
 
     private static void DisplayUsageString()
