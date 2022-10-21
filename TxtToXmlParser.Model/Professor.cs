@@ -1,6 +1,9 @@
-﻿namespace TxtToXmlParser.Model
-{
+﻿using System.Xml.Serialization;
 
+namespace TxtToXmlParser.Model
+{
+    [Serializable]
+    [XmlRoot("Professor")]
     public class Professor : Person
     {
         // Required by XML Serializer
@@ -22,7 +25,8 @@
             Paycheck = paycheck;
         }
 
-        public decimal Paycheck { get; }
+        [XmlElement("Paycheck")]
+        public decimal Paycheck { get; set; }
     }
 }
 

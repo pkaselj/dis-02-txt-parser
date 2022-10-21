@@ -143,7 +143,7 @@ public class Program
             var parsedModels = TxtParser.ParseTxtFile(sourceFile);
 
             serializer.Serialize(destinationFile, parsedModels);
-            
+
         }
         catch (Exception ex)
         {

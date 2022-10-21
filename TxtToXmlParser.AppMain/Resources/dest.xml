@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Person xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Student">
+  <OIB>12345678901</OIB>
+  <Name>Iva Ivic</Name>
+  <Gender>Female</Gender>
+  <DOB>1998-02-02T00:00:00</DOB>
+  <GPA>4.3</GPA>
+</Person>

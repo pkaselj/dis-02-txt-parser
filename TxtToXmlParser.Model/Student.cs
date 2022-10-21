@@ -1,5 +1,9 @@
+using System.Xml.Serialization;
+
 namespace TxtToXmlParser.Model
 {
+    [Serializable]
+    [XmlRoot("Student")]
     public class Student : Person
     {
         // Required by XML Serializer
@@ -21,7 +25,8 @@ namespace TxtToXmlParser.Model
             AverageGrade = averageGrade;
         }
 
-        public float AverageGrade { get; }
+        [XmlElement("GPA")]
+        public float AverageGrade { get; set; }
     }
 }
 

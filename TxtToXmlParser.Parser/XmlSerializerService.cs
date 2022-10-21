@@ -1,3 +1,4 @@
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace TxtToXmlParser.Parser
@@ -9,8 +10,9 @@ namespace TxtToXmlParser.Parser
             var serializer = new XmlSerializer(typeof(T));
 
             using (var fs = new FileStream(filePath, FileMode.OpenOrCreate))
+            using (var prettyXMLPrinter = XmlWriter.Create(fs, new XmlWriterSettings { Indent = true }))
             {
-                serializer.Serialize(fs, data);
+                serializer.Serialize(prettyXMLPrinter, data);
             }
         }
     } 

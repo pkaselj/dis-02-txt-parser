@@ -1,5 +1,13 @@
+using System.Xml.Serialization;
+
 namespace TxtToXmlParser.Model
 {
+    // Please the XML serializer gods
+    // https://stackoverflow.com/a/13529088
+    [XmlInclude(typeof(Student))]
+    [XmlInclude(typeof(Professor))]
+    [XmlRoot("Person")]
+    [Serializable]
     public class Person
     {
         // Required by XML Serializer
@@ -24,14 +32,18 @@ namespace TxtToXmlParser.Model
             DateOfBirth = dateOfBirth;
         }
 
-        public string OIB { get; }
-        public string Name { get; }
-        public Gender Gender { get; }
-        
+        [XmlElement("OIB")]
+        public string OIB { get; set; }
+        [XmlElement("Name")]
+        public string Name { get; set; }
+        [XmlElement("Gender")]
+        public Gender Gender { get; set; }
+
         // DOB changed from DateOnly to DateTime
         // because DateOnly serialization is not yet
         // supported
-        public DateTime DateOfBirth { get; } 
+        [XmlElement("DOB")]
+        public DateTime DateOfBirth { get; set; } 
     }
 }
 
