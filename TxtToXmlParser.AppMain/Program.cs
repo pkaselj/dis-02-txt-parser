@@ -142,10 +142,8 @@ public class Program
 
             var parsedModels = TxtParser.ParseTxtFile(sourceFile);
 
-            foreach (var model in parsedModels)
-            {
-                serializer.Serialize(destinationFile, model);
-            }
+            serializer.Serialize(destinationFile, parsedModels);
+            
         }
         catch (Exception ex)
         {
