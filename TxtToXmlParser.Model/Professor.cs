@@ -3,6 +3,13 @@
 
     public class Professor : Person
     {
+        // Required by XML Serializer
+        public Professor()
+            : base()
+        {
+            Paycheck = -1.00m;
+        }
+
         public Professor(
             string oIB,
             string name,

@@ -2,6 +2,15 @@ namespace TxtToXmlParser.Model
 {
     public class Person
     {
+        // Required by XML Serializer
+        public Person()
+        {
+            OIB = "<EMPTY>";
+            Name = "<EMPTY>";
+            Gender = Gender.Other;
+            DateOfBirth = DateOnly.MinValue;
+        }
+
         public Person(
             string oIB,
             string name,
