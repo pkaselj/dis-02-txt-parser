@@ -1,20 +1,77 @@
 ﻿using System.Linq;
 public class Program
 {
-    // private static string GetSourceFileFromArgs(string[] args)
-    // {
+    private static void ThrowIfFileNotFound(string filePath)
+    {
+        if (false == System.IO.File.Exists(filePath))
+        {
+            throw new Exception($"File '{filePath}' not found!");
+        }
+    }
 
-    // }
+    // Returns a Dictionary of Key-Value pairs formed from arguments
+    // by taking even args as keys and odd args as values
+    private Dictionary<string, string> ParseArguments(string[] args)
+    {
+        var argsLookupTable = new Dictionary<string, string>();
 
-    // private static string GetDestinationFileFromArgs(string[] args)
-    // {
+        for (int i = 0; i < args.Length; i += 2)
+        {
+            argsLookupTable.Add(args[i], args[i+1]);
+        }
 
-    // }
+        return argsLookupTable;
+    }
 
-    // private static string GetParserFileFromArgs(string[] args)
-    // {
+    // Assumes correct number of args (see ThrowIfNotEnoughArgs(...)) 
+    private static string GetSourceFileFromArgs(Dictionary<string, string> args)
+    {
+        string? sourceFilePath;
 
-    // }
+        bool fSuccess = false;
+
+        fSuccess = args.TryGetValue("-s", out sourceFilePath);
+        if (fSuccess && null != sourceFilePath)
+        {
+            return sourceFilePath;
+        }
+
+        fSuccess = args.TryGetValue("--source", out sourceFilePath);
+        if (fSuccess && null != sourceFilePath)
+        {
+            return sourceFilePath;
+        }
+
+        throw new Exception($"Argument for source file not found (-s, --source)!");
+    }
+
+    // Assumes correct number of args (see ThrowIfNotEnoughArgs(...)) 
+    private static string GetDestinationFileFromArgs(Dictionary<string, string> args)
+    {
+        string? destFilePath;
+
+        bool fSuccess = false;
+
+        fSuccess = args.TryGetValue("-d", out destFilePath);
+        if (fSuccess && null != destFilePath)
+        {
+            return destFilePath;
+        }
+
+        fSuccess = args.TryGetValue("--destination", out destFilePath);
+        if (fSuccess && null != destFilePath)
+        {
+            return destFilePath;
+        }
+
+        throw new Exception($"Argument for destination file not found (-d, --destination)!");
+    }
+
+    // Assumes correct number of args (see ThrowIfNotEnoughArgs(...)) 
+    private static string GetParserFileFromArgs(Dictionary<string, string> args)
+    {
+
+    }
 
     private static void DisplayUsageString()
     {
