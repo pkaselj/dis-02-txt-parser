@@ -2,10 +2,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TxtToXmlParser.Model\TxtToXmlParser.Model.csproj" />
+    <ProjectReference Include="..\TxtToXmlParser.Parser\TxtToXmlParser.Parser.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>

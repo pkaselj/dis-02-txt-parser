@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TxtToXmlParser.Parser", "Tx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TxtToXmlParser.Model", "TxtToXmlParser.Model\TxtToXmlParser.Model.csproj", "{F2D85BC5-34F2-497A-A0C2-9ACD91F0F430}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TxtToXmlParser.AppMain", "TxtToXmlParser.AppMain\TxtToXmlParser.AppMain.csproj", "{6E7B6938-5D62-4F02-8C46-F2FB09FFAC3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{F2D85BC5-34F2-497A-A0C2-9ACD91F0F430}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2D85BC5-34F2-497A-A0C2-9ACD91F0F430}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2D85BC5-34F2-497A-A0C2-9ACD91F0F430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E7B6938-5D62-4F02-8C46-F2FB09FFAC3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E7B6938-5D62-4F02-8C46-F2FB09FFAC3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E7B6938-5D62-4F02-8C46-F2FB09FFAC3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E7B6938-5D62-4F02-8C46-F2FB09FFAC3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
