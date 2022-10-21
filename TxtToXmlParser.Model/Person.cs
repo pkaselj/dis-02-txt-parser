@@ -8,14 +8,14 @@ namespace TxtToXmlParser.Model
             OIB = "<EMPTY>";
             Name = "<EMPTY>";
             Gender = Gender.Other;
-            DateOfBirth = DateOnly.MinValue;
+            DateOfBirth = DateTime.UnixEpoch;
         }
 
         public Person(
             string oIB,
             string name,
             Gender gender,
-            DateOnly dateOfBirth
+            DateTime dateOfBirth
         )
         {
             OIB = oIB;
@@ -27,7 +27,11 @@ namespace TxtToXmlParser.Model
         public string OIB { get; }
         public string Name { get; }
         public Gender Gender { get; }
-        public DateOnly DateOfBirth { get; } 
+        
+        // DOB changed from DateOnly to DateTime
+        // because DateOnly serialization is not yet
+        // supported
+        public DateTime DateOfBirth { get; } 
     }
 }
 

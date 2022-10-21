@@ -145,11 +145,11 @@ namespace TxtToXmlParser.Parser
             return Enum.Parse<Gender>(value, fIgnoreCase);
         }
 
-        private static DateOnly ParseDateOfBirth(string value)
+        private static DateTime ParseDateOfBirth(string value)
         {
             const string dateFormat = "yyyy/MM/dd"; 
 
-            return DateOnly.ParseExact(value, dateFormat);
+            return DateTime.ParseExact(value, dateFormat, null);
         }
 
         private static float ParseAverageGrade(string value)

@@ -8,12 +8,12 @@ namespace TxtToXmlParser.Model
         {
             AverageGrade = -1.00f;
         }
-        
+
         public Student(
             string oIB,
             string name,
             Gender gender,
-            DateOnly dateOfBirth,
+            DateTime dateOfBirth,
             float averageGrade
         )
             : base(oIB, name, gender, dateOfBirth)

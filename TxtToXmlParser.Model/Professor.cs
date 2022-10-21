@@ -14,7 +14,7 @@
             string oIB,
             string name,
             Gender gender,
-            DateOnly dateOfBirth,
+            DateTime dateOfBirth,
             decimal paycheck
         )
             : base(oIB, name, gender, dateOfBirth)
