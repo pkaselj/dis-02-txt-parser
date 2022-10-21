@@ -113,9 +113,9 @@ namespace TxtToXmlParser.Parser
                 throw new Exception($"OIB of invalid length: '{value}' ");
             }
 
-            bool isEachCharacterValid = (value.All(character => !Char.IsDigit(character)));
+            bool isAnyCharacterInvalid = (value.Any(character => !Char.IsDigit(character)));
 
-            if (!isEachCharacterValid)
+            if (isAnyCharacterInvalid)
             {
                 throw new Exception($"OIB contains invalid characters: '{value}' ");
             }
@@ -126,11 +126,11 @@ namespace TxtToXmlParser.Parser
 
         private static string ParseName(string value)
         {
-            bool isEachCharacterValid = value.Any(
+            bool isAnyCharacterInvalid = value.Any(
                 character => !Char.IsLetterOrDigit(character) && !Char.IsSeparator(character)
             );
 
-            if (!isEachCharacterValid)
+            if (isAnyCharacterInvalid)
             {
                 throw new Exception($"Name contains illegal characters: '{value}' ");
             }
