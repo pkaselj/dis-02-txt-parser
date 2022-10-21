@@ -1,10 +1,17 @@
+using System.Xml.Serialization;
+
 namespace TxtToXmlParser.Parser
 {
-    public static class XmlSerializerService
+    public class XmlSerializerService : ISerializer
     {
-        public static void Serialze<T>(string filePath, T data)
+        public void Serialize<T>(string filePath, T data)
         {
-            // var serialzer = System.serial
+            var serializer = new XmlSerializer(typeof(T));
+
+            using (var fs = new FileStream(filePath, FileMode.OpenOrCreate))
+            {
+                serializer.Serialize(fs, data);
+            }
         }
     } 
 }

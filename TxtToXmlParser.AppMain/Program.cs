@@ -14,7 +14,7 @@ public class Program
 
     // Returns a Dictionary of Key-Value pairs formed from arguments
     // by taking even args as keys and odd args as values
-    private Dictionary<string, string> ParseArguments(string[] args)
+    private static Dictionary<string, string> ParseArguments(string[] args)
     {
         var argsLookupTable = new Dictionary<string, string>();
 
@@ -128,6 +128,28 @@ public class Program
 
     public static void Main(string[] args)
     {
-        ThrowIfNotEnoughArgs(args);
+        try
+        {
+            ThrowIfNotEnoughArgs(args);
+
+            var argsLookupTable = ParseArguments(args);
+
+            var sourceFile = GetSourceFileFromArgs(argsLookupTable);
+            var destinationFile = GetDestinationFileFromArgs(argsLookupTable);
+            var serializer = GetParserFromArgs(argsLookupTable);
+
+            ThrowIfFileNotFound(sourceFile);
+
+            var parsedModels = TxtParser.ParseTxtFile(sourceFile);
+
+            serializer.Serialize(destinationFile, parsedModels);
+        }
+        catch (Exception ex)
+        {
+            System.Console.WriteLine($"Program encountered an error:");
+            System.Console.WriteLine(ex.Message);
+
+            return;
+        }
     }
 }
