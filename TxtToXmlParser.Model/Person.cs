@@ -7,7 +7,6 @@ namespace TxtToXmlParser.Model
     [XmlInclude(typeof(Student))]
     [XmlInclude(typeof(Professor))]
     [XmlRoot("Person")]
-    [Serializable]
     public class Person
     {
         // Required by XML Serializer

@@ -2,7 +2,6 @@
 
 namespace TxtToXmlParser.Model
 {
-    [Serializable]
     [XmlRoot("Professor")]
     public class Professor : Person
     {

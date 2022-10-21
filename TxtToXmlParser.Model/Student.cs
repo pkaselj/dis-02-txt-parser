@@ -2,7 +2,6 @@ using System.Xml.Serialization;
 
 namespace TxtToXmlParser.Model
 {
-    [Serializable]
     [XmlRoot("Student")]
     public class Student : Person
     {

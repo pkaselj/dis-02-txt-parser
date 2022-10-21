@@ -140,7 +140,7 @@ public class Program
 
             ThrowIfFileNotFound(sourceFile);
 
-            var parsedModels = TxtParser.ParseTxtFile(sourceFile);
+            var parsedModels = TxtParser.ParseTxtFile(sourceFile).ToArray();
 
             serializer.Serialize(destinationFile, parsedModels);
 
