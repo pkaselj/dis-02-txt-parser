@@ -8,7 +8,7 @@ public class Program
     {
         if (false == System.IO.File.Exists(filePath))
         {
-            throw new Exception($"File '{filePath}' not found!");
+            throw new FileNotFoundException($"File '{filePath}' not found!");
         }
     }
 
